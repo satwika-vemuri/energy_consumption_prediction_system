@@ -1,4 +1,4 @@
-,Timestamp,IndoorTemperature,OutdoorTemperature,EnergyConsumption
+Index,Timestamp,IndoorTemperature,OutdoorTemperature,EnergyConsumption
 0,2014-03-28T09:00:00+00:00,18.0,15.0,198933.26461847263
 1,2014-03-28T11:00:00+00:00,18.0,19.0,194664.2046126855
 2,2014-03-30T18:00:00+00:00,18.0,20.0,27303.848287432404
