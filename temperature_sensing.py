@@ -1,3 +1,6 @@
+Team Members: Hansini Ramachandran and Satwika Vemuri
+Github Repo:
+
 import time
 import grovepi
 
@@ -7,8 +10,8 @@ sensor = 0
 
 while True:
     try:
-        temp = grovepi.temp(sensor,'1.1')
-        print("temp =", temp)
+        temp = grovepi.temp(sensor,'1.1') #change this version number possibly
+        print("Indoor Temperature =", temp)
         time.sleep(.5)
 
     except KeyboardInterrupt:
