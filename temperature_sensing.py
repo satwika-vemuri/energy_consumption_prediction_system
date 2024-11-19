@@ -1,5 +1,5 @@
 #Team Members: Hansini Ramachandran and Satwika Vemuri
-Github Repo:
+#Github Repo:
 
 import time
 import grovepi
