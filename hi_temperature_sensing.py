@@ -50,7 +50,7 @@ def Main():
     total = 0
     average = 0
     # and do this indefinitely
-    for i in range(1,10):
+    for i in range(1,11):
         # read the room temperature
         room_temperature = sensor.getRoomTemperature()
         # and also what's important to us: the temperature at the tip of the K-Type sensor
