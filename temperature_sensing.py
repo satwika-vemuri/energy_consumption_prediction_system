@@ -6,7 +6,7 @@ import grovepi
 
 # Connect the Grove Temperature Sensor to analog port A0
 # SIG,NC,VCC,GND
-sensor = 0
+sensor = 1
 
 while True:
     try:
