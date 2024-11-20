@@ -10,8 +10,10 @@ sensor = 0
 
 while True:
     try:
-        temp = grovepi.temp(sensor)  #change this version number possibly
-        print("Indoor Temperature =", temp)
+        raw_value = grovepi.analogRead(sensor)
+        print("Raw sensor value:", raw_value)
+        #temp = grovepi.temp(sensor)  #change this version number possibly
+       # print("Indoor Temperature =", temp)
         time.sleep(.5)
 
     except KeyboardInterrupt:
