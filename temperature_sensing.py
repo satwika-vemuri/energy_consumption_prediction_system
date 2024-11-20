@@ -10,7 +10,7 @@ sensor = 0
 
 while True:
     try:
-        temp = grovepi.temp(sensor,'1.2') #change this version number possibly
+        temp = grovepi.temp(sensor)  #change this version number possibly
         print("Indoor Temperature =", temp)
         time.sleep(.5)
 
