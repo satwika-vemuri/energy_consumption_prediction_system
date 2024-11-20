@@ -47,13 +47,14 @@ def Main():
 
     # instatiate a HighTemperatureSensor object
     sensor = grovepi.HighTemperatureSensor(room_temperature_pin, probe_temperature_pin)
-
+    total = 0
+    average = 0
     # and do this indefinitely
-    for i in range(1:10)
+    for i in range(1,10):
         # read the room temperature
         room_temperature = sensor.getRoomTemperature()
         # and also what's important to us: the temperature at the tip of the K-Type sensor
-        sum = sum + room_temperature
+        total = total + room_temperature
 
         # print it in a fashionable way
         print(room_temperature)
@@ -63,7 +64,7 @@ def Main():
         # and wait for 250 ms before taking another measurement - so we don't overflow the terminal
         sleep(0.25)
 
-    average = sum/10
+    average = total/10
     print("Indoor Temperature ", average)
 
 if __name__ == "__main__":
