@@ -57,6 +57,8 @@ def Main():
 
         # print it in a fashionable way
         print(room_temperature)
+        print(probe_temperature)
+        #print('[room temperature: {:5.2f}°C][probe temperature: {:5.2f}°C]'.format(room_temperature, probe_temperature))
         # and wait for 250 ms before taking another measurement - so we don't overflow the terminal
         sleep(0.25)
 
