@@ -7,11 +7,12 @@ Run rpi_pub_and_sub.py on your Raspberry Pi."""
 
 import paho.mqtt.client as mqtt
 import time
-from grovepi import *
-from grove_rgb_lcd import *
+#from grovepi import *
+#from grove_rgb_lcd import *
 
 temp_sensor = 0
-
+#global flag
+flag = 0
 
 #def custom_callback(client, userdata, message):
     #print("received")
@@ -23,8 +24,11 @@ temp_sensor = 0
 
 def custom_callback2(client, userdata, message):
     msg = (message.payload).decode('utf-8')
+    print("incallback")
     if (msg == "True"):
-        flag = True
+        print("received")
+        flag = 1
+        client.publish("satwika-vemuri/temp", 10)
 
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
@@ -49,10 +53,13 @@ if __name__ == '__main__':
 
     while True:
         #val = ultrasonicRead(ultrasonic_ranger)
-        if (flag):
-            val = 10
-            client.publish("satwika-vemuri/temp", val)
-            flag = False
+        #print(flag)
+        #if (flag==1):
+            #print("Flag is true")
+            #val = 10
+            #client.publish("satwika-vemuri/temp", val)
+            #flag = 0
+       # client.publish("satwika-vemuri/temp", 10)
         #b = digitalRead(button)
         #client.publish("satwika-vemuri/button", b)
         time.sleep(1)
