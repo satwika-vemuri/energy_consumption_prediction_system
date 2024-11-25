@@ -1,0 +1,22 @@
+#Team Members: Hansini Ramachandran and Satwika Vemuri
+#Github Repo:
+
+import time
+import grovepi
+
+# Connect the Grove Temperature Sensor to analog port A0
+# SIG,NC,VCC,GND
+sensor = 1
+
+while True:
+    try:
+        raw_value = grovepi.analogRead(sensor)
+        print("Raw sensor value:", raw_value)
+        #temp = grovepi.temp(sensor)  #change this version number possibly
+       # print("Indoor Temperature =", temp)
+        time.sleep(.5)
+
+    except KeyboardInterrupt:
+        break
+    except IOError:
+        print ("Error")
