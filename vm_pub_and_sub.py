@@ -27,11 +27,6 @@ def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
 
 def on_press():
-    print("in on press")
-    #try: 
-       # k = key.char # single-char keys
-    #except: 
-        #k = key.name # other keys
     while True:
         sense = input("Sense? Y/N")
         if sense == 'Y':
@@ -42,8 +37,8 @@ def on_press():
 
 if __name__ == '__main__':
     #setup the keyboard event listener
-    #lis = keyboard.Listener(on_press=on_press)
-    #lis.start() # start to listen on a separate thread
+    lis = keyboard.Listener(on_press=on_press)
+    lis.start() # start to listen on a separate thread
 
     #this section is covered in publisher_and_subscriber_example.py
     client = mqtt.Client()
