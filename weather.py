@@ -24,9 +24,11 @@ def get_weather(city):
         feels_like = data['current']['feelslike_f']
 	
         # TODO: Display the extracted weather information in a well-formatted manner.
-        print(f"Weather data for {city} ...")
-        print(f"Status 200: {response.status_code}")
-        print(f"Outdoor Temperature: {outdoor_temp} F (Feels Like: {feels_like} F)")
+        # print(f"Weather data for {city} ...")
+        # print(f"Status 200: {response.status_code}")
+        # print(f"Outdoor Temperature: {outdoor_temp} F (Feels Like: {feels_like} F)")
+
+        return (response.status_code, outdoor_temp)
         
     else:
         # TODO: Implement error handling for common status codes. Provide meaningful error messages based on the status code.
