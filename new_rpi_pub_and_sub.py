@@ -56,9 +56,32 @@ if __name__ == '__main__':
         val = ultrasonicRead(ultrasonic_ranger)
         #print(flag)
         if (flag==1):
-            #print("Flag is true")
-            #val = 10
-            client.publish("satwika-vemuri/temp", val)
+            room_temperature_pin = 15 # this is equal to A1
+            probe_temperature_pin = 14 # this is equal to A0
+            # so you have to connect the sensor to A0 port
+
+            # instatiate a HighTemperatureSensor object
+            sensor = grovepi.HighTemperatureSensor(room_temperature_pin, probe_temperature_pin)
+            total = 0
+            average = 0
+            # and do this indefinitely
+            for i in range(1,11):
+                # read the room temperature
+                room_temperature = sensor.getRoomTemperature()
+                # and also what's important to us: the temperature at the tip of the K-Type sensor
+                total = total + room_temperature
+
+                # print it in a fashionable way
+                print(room_temperature)
+            
+                print()
+                #print('[room temperature: {:5.2f}°C][probe temperature: {:5.2f}°C]'.format(room_temperature, probe_temperature))
+                # and wait for 250 ms before taking another measurement - so we don't overflow the terminal
+                time.sleep(0.25)
+
+            average = total/10
+            print("Indoor Temperature ", average)
+            client.publish("satwika-vemuri/temp", average)
             flag = 0
        # client.publish("satwika-vemuri/temp", 10)
         #b = digitalRead(button)
