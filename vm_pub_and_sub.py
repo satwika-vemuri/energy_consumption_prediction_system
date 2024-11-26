@@ -10,6 +10,8 @@ import time
 import threading
 from flask import Flask, flash, redirect, render_template, request, session, abort
 import weather
+import machine_learning
+import math
 
 main_page = """
 <!DOCTYPE html>
@@ -23,12 +25,17 @@ In the textbox below, enter the name of the city you are located in. Then, click
 <form action="getWeather">
     <input type="text" name="city" placeholder="City Name">
     <button type="submit">Retrieve Weather!</button>
+    <br>
+    <div id="text"></div>
 <form>
  
 </body>
 
 </html>
 """
+
+updated = False
+consumption = -1
 
 app = Flask(__name__)
 succeeded = set()
@@ -39,18 +46,25 @@ def setup():
 
 @app.route('/getWeather')
 def getWeather():
+    global updated
     #client.publish("satwika-vemuri/temp", "True")
-    return main_page
-
+    while(updated == False):
+        time.sleep(1)
+    updated = True    
+    return render_template('result.html', value=consumption)
 
 def custom_callback(client, userdata, message):
+    global consumption, updated
+
     indoor_temp = (message.payload).decode('utf-8')
     print("VM: " + indoor_temp)
 
     weather_data = weather.get_weather(request.args.get("city"))
     if(weather_data[0] == 200): # status code successful
+        # Call ML model w/indoor and outdoor temp
         outdoor_temp = weather_data[1] 
-        # TODO: Call ML model w/indoor and outdoor temp
+        consumption = machine_learning.predict(math.abs(outdoor_temp-indoor_temp))
+        updated = True
     else:
         print("Data retrieval not successful")
 
