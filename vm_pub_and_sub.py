@@ -47,10 +47,11 @@ def setup():
 @app.route('/getWeather')
 def getWeather():
     global updated
-    #client.publish("satwika-vemuri/temp", "True")
+    client.publish("satwika-vemuri/temp", "True")
     while(updated == False):
         time.sleep(1)
-    updated = True    
+    updated = True
+    print("hello")    
     return render_template('result.html', value=consumption)
 
 def custom_callback(client, userdata, message):

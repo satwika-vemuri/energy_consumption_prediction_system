@@ -53,11 +53,11 @@ if __name__ == '__main__':
     client.loop_start()
 
     while True:
-        #val = ultrasonicRead(ultrasonic_ranger)
+        val = ultrasonicRead(ultrasonic_ranger)
         #print(flag)
         if (flag==1):
             #print("Flag is true")
-            val = 10
+            #val = 10
             client.publish("satwika-vemuri/temp", val)
             flag = 0
        # client.publish("satwika-vemuri/temp", 10)
