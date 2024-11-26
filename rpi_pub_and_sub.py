@@ -12,7 +12,7 @@ import time
 
 temp_sensor = 0
 #global flag
-num = 0
+flag = 0
 
 #def custom_callback(client, userdata, message):
     #print("received")
@@ -23,12 +23,12 @@ num = 0
         #digitalWrite(led,0)
 
 def custom_callback2(client, userdata, message):
-    global num
+    global flag
     msg = (message.payload).decode('utf-8')
     #print("incallback")
     if (msg == "True"):
         #print("received")
-        num = 1
+        flag = 1
         #client.publish("satwika-vemuri/temp", 10)
 
 def on_connect(client, userdata, flags, rc):
@@ -55,11 +55,11 @@ if __name__ == '__main__':
     while True:
         #val = ultrasonicRead(ultrasonic_ranger)
         #print(flag)
-        if (num==1):
+        if (flag==1):
             #print("Flag is true")
             val = 10
             client.publish("satwika-vemuri/temp", val)
-            num = 0
+            flag = 0
        # client.publish("satwika-vemuri/temp", 10)
         #b = digitalRead(button)
         #client.publish("satwika-vemuri/button", b)
