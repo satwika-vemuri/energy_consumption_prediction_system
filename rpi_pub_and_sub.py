@@ -1,10 +1,3 @@
-"""EE 250L Lab 04 Starter Code
-
-REPO: https://github.com/usc-ee250-fall2024/mqtt-satwika-and-hansini/tree/master
-Satwika Vemuri and Hansini Ramachandran
-
-Run rpi_pub_and_sub.py on your Raspberry Pi."""
-
 import paho.mqtt.client as mqtt
 import time
 from grovepi import *
